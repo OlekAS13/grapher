@@ -26,7 +26,10 @@ def drawGraph():
 
     scaletext = "sx = {}, sy = {}".format(sx, sy)
 
-    graph.title("Grapher [OlekAS13] | " + equation)
+    if funcType == "Q":
+        graph.title("Grapher [OlekAS13] | " + equation + " | QUADRATICAL")
+    elif funcType == "L":
+        graph.title("Grapher [OlekAS13] | " + equation + " | LINEAR")
 
     canv = Canvas(graph, width=801, height=801, background="white")
 
@@ -108,9 +111,10 @@ def main():
     global a, b, c
 
     askFuncType()
-    askScale()
 
     if funcType == "Q":
+        askScale()
+
         print("y = a x^2 + b x + c")
 
         #inputs
@@ -119,10 +123,12 @@ def main():
         c = float(input("c = "))
 
         print("y =", a, "x^2 +", b, "x +", c)
-
+        
         drawGraph()
         
     elif funcType == "L":
+        askScale()
+
         print("y = a x + b")
 
         #inputs
@@ -130,12 +136,13 @@ def main():
         b = float(input("b = "))
 
         print("y =", a, "x +", b)
-
+        
         drawGraph()
 
     else:
         print("Please specify a correct function type.")
         main()
+
 
 main()
 
